@@ -96,7 +96,7 @@ public class BukuAlamatMenu {
 
                     case 2:
                         System.out.println("Menghapus data");
-                        System.out.println("Input nomor siswa yang akan dihapus : ");
+                        System.out.println("Input index siswa yang akan dihapus : ");
                             try {
                                 n = br.readLine();
                             } catch (IOException ex) {
@@ -104,14 +104,26 @@ public class BukuAlamatMenu {
                             }
                             
                         index = Integer.parseInt(n);
+                            
                         System.out.println("Ditemukan data ke : "+index);
                         bar.setNama(nama[index], index, alamat[index], notel[index], email[index]);
                         
+                            nama[index]   = nama[index+1];
+                            alamat[index] = alamat[index+1];
+                            notel[index]  = notel[index+1];
+                            email[index]  = email[index+1];
+                            int jum = Integer.parseInt(jumlah);
+                            jum--;
+                            String s = String.valueOf(jum);
+                            jumlah = s;
+                        /*
                         nama[index]     = null;
                         alamat[index]   = null;
                         notel[index]    = null;
-                        email[index]    = null;
+                        email[index]    = null;*/
+                        
                         break;
+                                
 
                     case 3:
                         System.out.println("=====DATA SISWA=====");
