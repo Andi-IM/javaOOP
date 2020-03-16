@@ -9,6 +9,6 @@ package pja9_16032020;
  *
  * @author Andi
  */
-public class livingThing {
+public class livingThing{
     
 }

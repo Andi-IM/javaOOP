@@ -12,15 +12,15 @@ import java.text.DecimalFormat;
  * @author Andi
  */
 public class studentRecord {
-    private String name;
-    private String address;
-    private int age;
-    private String NoBp;
-    private double mathGrade;
-    private double englishGrade;
-    private double scienceGrade;
-    private double averageGrade;
-    private static int studentCount; 
+    protected String name;
+    protected String address;
+    protected int age;
+    protected String NoBp;
+    protected double mathGrade;
+    protected double englishGrade;
+    protected double scienceGrade;
+    protected double averageGrade;
+    protected static int studentCount; 
 
     public String getName() {
         return name;
