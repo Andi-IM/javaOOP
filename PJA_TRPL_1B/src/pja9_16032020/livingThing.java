@@ -9,6 +9,18 @@ package pja9_16032020;
  *
  * @author Andi
  */
-public class livingThing{
+public abstract class livingThing{
+    public void breath(){
+        System.out.println("Living Thing breathing...");
+    }
     
+    public void eat(){
+        System.out.println("Living Thing eating...");
+    }
+    
+    /**
+     * abstract mehod walk
+     * Kita ingin mehthod ini di-overidden oleh subclasses
+     */
+    public abstract void walk();
 }
