@@ -9,6 +9,9 @@ package pja10_19032020;
  *
  * @author Andi
  */
-public class LivingThing {
-    
+public class Dog extends livingThing{
+      @Override
+    public void walk(){
+        System.out.println("Dogo walks...");
+    }
 }

@@ -3,15 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pja9_16032020;
+package pja11_23032020;
 
 /**
  *
  * @author Andi
  */
-public class Dog extends livingThing{
-      @Override
-    public void walk(){
-        System.out.println("Dogo walks...");
-    }
+public interface Relation {
+    public boolean isGreater(Object a, Object b);
+    public boolean isLess(Object a, Object b);
+    public boolean isEqual(Object a, Object b);
 }

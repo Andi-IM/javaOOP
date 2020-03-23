@@ -9,6 +9,17 @@ package pja10_19032020;
  *
  * @author Andi
  */
-public class Human {
-    
+public class Human extends livingThing{
+    @Override
+    public void walk(){
+        System.out.println("Human walks...");
+    }
+    @Override
+    public void eat(){
+        System.out.println("Human eats...");
+    }
+    @Override
+    public void breath(){
+        System.out.println("Human breath...");
+    }
 }
