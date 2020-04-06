@@ -5,20 +5,27 @@
  */
 package pja14_02042020;
 
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+import javax.swing.DefaultListModel;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 /**
  *
  * @author Andi
- * ArrayListHandler berfungsi untuk menghandle fungsi-fungsi utama program ini.
- * ArrayLIstHandler adalah pusat aksi dari program ini.
+ ArrayList_DAO berfungsi untuk menghandle fungsi-fungsi utama program ini.
+ ArrayLIstHandler adalah pusat aksi dari program ini.
  */
-public class ArrayListHandler extends ArrayListData implements ArrayListInterface{
-   ArrayList<ArrayListData> AL = new ArrayList<>();
+public class ArrayList_DAO extends ArrayListModel implements ArrayListInterface{
+   ArrayList<ArrayListModel> AL = new ArrayList<>();
    
    public void Insert() {         // using JTextField to Insert Data
         JTextField noKTP = new JTextField();
@@ -39,7 +46,7 @@ public class ArrayListHandler extends ArrayListData implements ArrayListInterfac
 
         int option = JOptionPane.showConfirmDialog(null, message, "Insert Data", JOptionPane.OK_CANCEL_OPTION);
         if (option == JOptionPane.OK_OPTION) {
-            AL.add(new ArrayListData(noKTP.getText(), name.getText(),  phone.getText(), 
+            AL.add(new ArrayListModel(noKTP.getText(), name.getText(),  phone.getText(), 
                     address.getText(), disease.getText(), Status.getText()));
         }
     }
@@ -61,13 +68,19 @@ public class ArrayListHandler extends ArrayListData implements ArrayListInterfac
         throw new UnsupportedOperationException("Not supported yet."); 
     }
     //------------------------------------------
-    
+    private JList<ArrayListModel> list;
     @Override
     public void display() {
+        JFrame frame = new JFrame("Dislay all");
+        DefaultListModel<ArrayListModel> listModel = new DefaultListModel<>();
+        JLabel label = new JLabel();
+        
+        if(!AL.isEmpty()){
+        
         Iterator itr = AL.iterator();                       // using iterator
-         if(!AL.isEmpty()){
+         
          while(itr.hasNext()){
-            ArrayListData asl = (ArrayListData)itr.next();
+            ArrayListModel asl = (ArrayListModel)itr.next();
             System.out.println(
                     "\nNomor Pasien : "+(AL.indexOf(asl)+1)+
                     "\nNo Ktp       : "+asl.getNoKtp()+" "+
@@ -75,11 +88,35 @@ public class ArrayListHandler extends ArrayListData implements ArrayListInterfac
                     "\nNo. HP       : "+asl.getNoHp()+" "+
                     "\nAlamat       : "+asl.getAlamat()+" "+
                     "\nGejala       : "+asl.getGejala()+" "+
-                    "\nStatus       : "+asl.getStatus());  }
+                    "\nStatus       : "+asl.getStatus());  } //EXPERIMENTAL 
+              
+//                for (ArrayListModel ald: AL ) { // create the model and elements          
+//                    listModel.addElement(ald);
+//                    System.out.println(listModel.get(AL.indexOf(ald)).getNama());
+//                    System.out.println(ald);
+//                }
+//                
+//                list = new JList<ArrayListData>(listModel);
+//                list.addListSelectionListener(new ListSelectionListener() {
+//                    @Override
+//                    public void valueChanged(ListSelectionEvent e) {
+//                        if (!e.getValueIsAdjusting()) {
+//                            final List<ArrayListData> selectedValuesList = list.getSelectedValuesList();
+//                            System.out.println(selectedValuesList);
+//                        }
+//                    }
+//                });
+//                
+//                frame.add(new JScrollPane(list));
+//                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+//                frame.setTitle("Display");
+//                frame.setSize(400,400);
+//                frame.setLocationRelativeTo(null);
+//                frame.setVisible(true);
             }else{    
              System.out.println("--kosong--");
-        }  
-    }
+            }}   
+    
     
     @Override
     public void find() {
@@ -99,7 +136,7 @@ public class ArrayListHandler extends ArrayListData implements ArrayListInterfac
                 Iterator itr = AL.iterator();
                 
                     while(itr.hasNext()){
-                        ArrayListData asl = (ArrayListData) itr.next();
+                        ArrayListModel asl = (ArrayListModel) itr.next();
                             if (AL.indexOf(asl) == (key)) {
                             break;}
                             Object[] pesan = {
@@ -138,7 +175,7 @@ public class ArrayListHandler extends ArrayListData implements ArrayListInterfac
         
         Iterator itr = AL.iterator();
         while(itr.hasNext()){
-            ArrayListData asl = (ArrayListData) itr.next();
+            ArrayListModel asl = (ArrayListModel) itr.next();
                 if (AL.indexOf(asl) == (key)) {
                 break;}
                 Object[] ps = {
@@ -171,7 +208,7 @@ public class ArrayListHandler extends ArrayListData implements ArrayListInterfac
 
             Iterator itr = AL.iterator();
             while(itr.hasNext()){
-                ArrayListData asl = (ArrayListData) itr.next();
+                ArrayListModel asl = (ArrayListModel) itr.next();
                     if (AL.indexOf(asl) == (key)) {
                     break;}
                     Object[] ps = {
@@ -199,13 +236,17 @@ public class ArrayListHandler extends ArrayListData implements ArrayListInterfac
 
                 int optIns = JOptionPane.showConfirmDialog(null, message, "Insert Data", JOptionPane.OK_CANCEL_OPTION);
                 if (optIns == JOptionPane.OK_OPTION) {
-                    AL.set(key, new ArrayListData(noKTP.getText(), name.getText(),  phone.getText(), 
+                    AL.set(key, new ArrayListModel(noKTP.getText(), name.getText(),  phone.getText(), 
                             address.getText(), disease.getText(), Status.getText()));
                     JOptionPane.showMessageDialog(null, "Data Telah di update!");}
                 }
         }else{    
             String alert = "Data belum ada!";
             JOptionPane.showInternalMessageDialog(null, alert);}
+    }
+
+    private void add(JScrollPane jScrollPane) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
 

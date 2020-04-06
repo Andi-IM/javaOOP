@@ -3,10 +3,10 @@ package pja14_02042020;
 /**
  *
  * @author Andi
- *  ArrayListData berfungsi menyimpan atribut-atribut objek
- *  oleh karena itu dalam kelas ini hanya menyimpan data.
+  ArrayListModel berfungsi menyimpan atribut-atribut objek
+  oleh karena itu dalam kelas ini hanya menyimpan data.
  */
-public class ArrayListData{
+public class ArrayListModel{
     String noKtp = null; 
     String nama = null;
     String noHp = null;
@@ -14,8 +14,8 @@ public class ArrayListData{
     String gejala = null; 
     String status = null;
     
-    public ArrayListData(){}
-    public ArrayListData(String noKtp, String nama, String noHp, 
+    public ArrayListModel(){}
+    public ArrayListModel(String noKtp, String nama, String noHp, 
                          String alamat, String gejala, String status) {
        
        this.noKtp = noKtp;
