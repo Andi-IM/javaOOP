@@ -5,6 +5,9 @@
  */
 package pja15_06042020;
 
+import javax.swing.JTable;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Andi
@@ -14,10 +17,42 @@ public class StudentRecord_View extends javax.swing.JFrame {
     /**
      * Creates new form StudentRecord_View
      */
+    StudentRecord_Controller controller;
+    
     public StudentRecord_View() {
         initComponents();
+        controller = new StudentRecord_Controller(this);
+        controller.clearForm();
+        controller.viewTable();
     }
 
+    public JTextField getjTF_Alamat() {
+        return jTF_Alamat;
+    }
+
+    public JTextField getjTF_BahasaInggris() {
+        return jTF_BahasaInggris;
+    }
+
+    public JTextField getjTF_IPA() {
+        return jTF_IPA;
+    }
+
+    public JTextField getjTF_Matematika() {
+        return jTF_Matematika;
+    }
+
+    public JTextField getjTF_Umur() {
+        return jTF_Umur;
+    }
+
+    public JTextField getjTF_Nama() {
+        return jTF_Nama;
+    }
+
+    public JTable getTableStudent() {
+        return TableStudent;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,25 +64,25 @@ public class StudentRecord_View extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        LB_StudentRecord = new javax.swing.JLabel();
+        LB_Nama = new javax.swing.JLabel();
+        LB_Alamat = new javax.swing.JLabel();
+        LB_Umur = new javax.swing.JLabel();
+        LB_Matematika = new javax.swing.JLabel();
+        LB_Bing = new javax.swing.JLabel();
+        LB_IPA = new javax.swing.JLabel();
         btnInsert = new javax.swing.JToggleButton();
         btnUpdate = new javax.swing.JToggleButton();
         btnDelete = new javax.swing.JToggleButton();
         btnCancel = new javax.swing.JToggleButton();
-        jTF_nama = new javax.swing.JTextField();
+        jTF_Nama = new javax.swing.JTextField();
         jTF_Alamat = new javax.swing.JTextField();
         jTF_Umur = new javax.swing.JTextField();
         jTF_Matematika = new javax.swing.JTextField();
         jTF_BahasaInggris = new javax.swing.JTextField();
         jTF_IPA = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        TableStudent = new javax.swing.JTable();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -64,30 +99,50 @@ public class StudentRecord_View extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        jLabel1.setText("Student Record");
+        LB_StudentRecord.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        LB_StudentRecord.setText("Student Record");
 
-        jLabel2.setText("Nama");
+        LB_Nama.setText("Nama");
 
-        jLabel3.setText("Alamat");
+        LB_Alamat.setText("Alamat");
 
-        jLabel4.setText("Umur");
+        LB_Umur.setText("Umur");
 
-        jLabel5.setText("Matematika");
+        LB_Matematika.setText("Matematika");
 
-        jLabel6.setText("Bahasa Inggris");
+        LB_Bing.setText("Bahasa Inggris");
 
-        jLabel7.setText("IPA");
+        LB_IPA.setText("IPA");
 
         btnInsert.setText("Insert");
+        btnInsert.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInsertActionPerformed(evt);
+            }
+        });
 
         btnUpdate.setText("update");
+        btnUpdate.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnUpdateMouseClicked(evt);
+            }
+        });
 
         btnDelete.setText("delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         btnCancel.setText("cancel");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
 
-        jTF_nama.setText("jTextField1");
+        jTF_Nama.setText("jTextField1");
 
         jTF_Alamat.setText("jTextField2");
 
@@ -99,7 +154,7 @@ public class StudentRecord_View extends javax.swing.JFrame {
 
         jTF_IPA.setText("jTextField6");
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        TableStudent.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -110,7 +165,12 @@ public class StudentRecord_View extends javax.swing.JFrame {
                 "Nama", "Alamat", "Umur", "Nilai"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        TableStudent.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TableStudentMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(TableStudent);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -124,12 +184,12 @@ public class StudentRecord_View extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(19, 19, 19)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel7))
+                                    .addComponent(LB_Umur)
+                                    .addComponent(LB_Alamat)
+                                    .addComponent(LB_Nama)
+                                    .addComponent(LB_Matematika)
+                                    .addComponent(LB_Bing)
+                                    .addComponent(LB_IPA))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jTF_BahasaInggris)
@@ -141,7 +201,7 @@ public class StudentRecord_View extends javax.swing.JFrame {
                                         .addComponent(btnDelete)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(btnCancel))
-                                    .addComponent(jTF_nama, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTF_Nama, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTF_Matematika, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTF_Umur, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTF_IPA)))
@@ -152,37 +212,37 @@ public class StudentRecord_View extends javax.swing.JFrame {
                         .addGap(32, 32, 32))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(193, 193, 193)
-                .addComponent(jLabel1)
+                .addComponent(LB_StudentRecord)
                 .addContainerGap(193, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(LB_StudentRecord)
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTF_nama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(LB_Nama)
+                    .addComponent(jTF_Nama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
+                    .addComponent(LB_Alamat)
                     .addComponent(jTF_Alamat, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
+                    .addComponent(LB_Umur)
                     .addComponent(jTF_Umur))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
+                    .addComponent(LB_Matematika)
                     .addComponent(jTF_Matematika, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
+                    .addComponent(LB_Bing)
                     .addComponent(jTF_BahasaInggris, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
+                    .addComponent(LB_IPA)
                     .addComponent(jTF_IPA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -197,6 +257,33 @@ public class StudentRecord_View extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertActionPerformed
+        // TODO add your handling code here:
+        controller.insert();
+        controller.viewTable();
+    }//GEN-LAST:event_btnInsertActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        controller.delete();
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        // TODO add your handling code here:
+        controller.clearForm();
+    }//GEN-LAST:event_btnCancelActionPerformed
+
+    private void TableStudentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableStudentMouseClicked
+        // TODO add your handling code here:
+        controller.onClickTable();
+    }//GEN-LAST:event_TableStudentMouseClicked
+
+    private void btnUpdateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUpdateMouseClicked
+        // TODO add your handling code here:
+        controller.update();
+        controller.viewTable();
+    }//GEN-LAST:event_btnUpdateMouseClicked
 
     /**
      * @param args the command line arguments
@@ -234,26 +321,26 @@ public class StudentRecord_View extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LB_Alamat;
+    private javax.swing.JLabel LB_Bing;
+    private javax.swing.JLabel LB_IPA;
+    private javax.swing.JLabel LB_Matematika;
+    private javax.swing.JLabel LB_Nama;
+    private javax.swing.JLabel LB_StudentRecord;
+    private javax.swing.JLabel LB_Umur;
+    private javax.swing.JTable TableStudent;
     private javax.swing.JToggleButton btnCancel;
     private javax.swing.JToggleButton btnDelete;
     private javax.swing.JToggleButton btnInsert;
     private javax.swing.JToggleButton btnUpdate;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTF_Alamat;
     private javax.swing.JTextField jTF_BahasaInggris;
     private javax.swing.JTextField jTF_IPA;
     private javax.swing.JTextField jTF_Matematika;
+    private javax.swing.JTextField jTF_Nama;
     private javax.swing.JTextField jTF_Umur;
-    private javax.swing.JTextField jTF_nama;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
 }

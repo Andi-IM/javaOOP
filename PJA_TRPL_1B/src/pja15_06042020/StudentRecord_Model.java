@@ -8,6 +8,8 @@ package pja15_06042020;
 /**
  *
  * @author Andi
+ * Model direpresentasikan oleh POJO (Plain Old Java Object)
+ * terdapat attribut dan getter dan stter.
  */
 public class StudentRecord_Model {
     private String name;
@@ -67,12 +69,6 @@ public class StudentRecord_Model {
     }
 
     public double getAverage() {
-        return average;
+        return average = (mathGrade+scienceGrade+englishGrade)/3;
     }
-
-    public void setAverage(double average) {
-        this.average = average;
-    }
-    
-    
 }

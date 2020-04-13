@@ -11,6 +11,8 @@ import java.util.List;
 /**
  *
  * @author Andi
+ * DAO (Data Access Object) kelas yang melakukan manipulasi data yang terdapat dalam database.
+ * dapat berupa Create Read Update dan Delete (CRUD)
  */
 public class StudentRecord_DAO implements StudentRecord_Interface{
     private List<StudentRecord_Model> data = new ArrayList<StudentRecord_Model>();
