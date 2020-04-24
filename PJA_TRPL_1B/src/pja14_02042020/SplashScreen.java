@@ -31,7 +31,7 @@ public class SplashScreen {
 
     private void createGUI() {
         frame = new JFrame();
-         frame.getContentPane().setLayout(null);
+        frame.getContentPane().setLayout(null);
         frame.setUndecorated(true);
         frame.setSize(600,400);
         frame.setLocationRelativeTo(null);

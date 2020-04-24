@@ -71,9 +71,6 @@ public class StudentRecord_View extends javax.swing.JFrame {
         LB_Matematika = new javax.swing.JLabel();
         LB_Bing = new javax.swing.JLabel();
         LB_IPA = new javax.swing.JLabel();
-        btnInsert = new javax.swing.JToggleButton();
-        btnUpdate = new javax.swing.JToggleButton();
-        btnDelete = new javax.swing.JToggleButton();
         btnCancel = new javax.swing.JToggleButton();
         jTF_Nama = new javax.swing.JTextField();
         jTF_Alamat = new javax.swing.JTextField();
@@ -83,6 +80,9 @@ public class StudentRecord_View extends javax.swing.JFrame {
         jTF_IPA = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         TableStudent = new javax.swing.JTable();
+        btnInsert = new javax.swing.JButton();
+        btnUpdate = new javax.swing.JButton();
+        btnDel = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -113,27 +113,6 @@ public class StudentRecord_View extends javax.swing.JFrame {
         LB_Bing.setText("Bahasa Inggris");
 
         LB_IPA.setText("IPA");
-
-        btnInsert.setText("Insert");
-        btnInsert.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInsertActionPerformed(evt);
-            }
-        });
-
-        btnUpdate.setText("update");
-        btnUpdate.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnUpdateMouseClicked(evt);
-            }
-        });
-
-        btnDelete.setText("delete");
-        btnDelete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteActionPerformed(evt);
-            }
-        });
 
         btnCancel.setText("cancel");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -172,44 +151,60 @@ public class StudentRecord_View extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(TableStudent);
 
+        btnInsert.setText("Insert");
+        btnInsert.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInsertActionPerformed(evt);
+            }
+        });
+
+        btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
+
+        btnDel.setText("Delete");
+        btnDel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDelActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(64, 64, 64)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(LB_Umur)
+                            .addComponent(LB_Alamat)
+                            .addComponent(LB_Nama)
+                            .addComponent(LB_Matematika)
+                            .addComponent(LB_Bing)
+                            .addComponent(LB_IPA)
+                            .addComponent(btnInsert))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(19, 19, 19)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(LB_Umur)
-                                    .addComponent(LB_Alamat)
-                                    .addComponent(LB_Nama)
-                                    .addComponent(LB_Matematika)
-                                    .addComponent(LB_Bing)
-                                    .addComponent(LB_IPA))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jTF_BahasaInggris)
-                                    .addComponent(jTF_Alamat, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addGap(35, 35, 35)
-                                        .addComponent(btnUpdate)
-                                        .addGap(66, 66, 66)
-                                        .addComponent(btnDelete)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btnCancel))
-                                    .addComponent(jTF_Nama, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTF_Matematika, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTF_Umur, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTF_IPA)))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(51, 51, 51))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnInsert)
-                        .addGap(32, 32, 32))))
+                            .addComponent(jTF_BahasaInggris)
+                            .addComponent(jTF_Alamat, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(41, 41, 41)
+                                .addComponent(btnUpdate)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnDel)
+                                .addGap(64, 64, 64)
+                                .addComponent(btnCancel))
+                            .addComponent(jTF_Nama, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTF_Matematika, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTF_Umur, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTF_IPA)))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(51, 51, 51))
             .addGroup(layout.createSequentialGroup()
                 .addGap(193, 193, 193)
                 .addComponent(LB_StudentRecord)
@@ -246,10 +241,10 @@ public class StudentRecord_View extends javax.swing.JFrame {
                     .addComponent(jTF_IPA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCancel)
                     .addComponent(btnInsert)
                     .addComponent(btnUpdate)
-                    .addComponent(btnDelete)
-                    .addComponent(btnCancel))
+                    .addComponent(btnDel))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
@@ -257,17 +252,6 @@ public class StudentRecord_View extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertActionPerformed
-        // TODO add your handling code here:
-        controller.insert();
-        controller.viewTable();
-    }//GEN-LAST:event_btnInsertActionPerformed
-
-    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        // TODO add your handling code here:
-        controller.delete();
-    }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         // TODO add your handling code here:
@@ -279,11 +263,23 @@ public class StudentRecord_View extends javax.swing.JFrame {
         controller.onClickTable();
     }//GEN-LAST:event_TableStudentMouseClicked
 
-    private void btnUpdateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUpdateMouseClicked
+    private void btnInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertActionPerformed
+        // TODO add your handling code here:
+        controller.insert();
+        controller.viewTable();
+    }//GEN-LAST:event_btnInsertActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
         controller.update();
         controller.viewTable();
-    }//GEN-LAST:event_btnUpdateMouseClicked
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void btnDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelActionPerformed
+        // TODO add your handling code here:
+        controller.delete();
+        controller.viewTable();
+    }//GEN-LAST:event_btnDelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -330,9 +326,9 @@ public class StudentRecord_View extends javax.swing.JFrame {
     private javax.swing.JLabel LB_Umur;
     private javax.swing.JTable TableStudent;
     private javax.swing.JToggleButton btnCancel;
-    private javax.swing.JToggleButton btnDelete;
-    private javax.swing.JToggleButton btnInsert;
-    private javax.swing.JToggleButton btnUpdate;
+    private javax.swing.JButton btnDel;
+    private javax.swing.JButton btnInsert;
+    private javax.swing.JButton btnUpdate;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTF_Alamat;
