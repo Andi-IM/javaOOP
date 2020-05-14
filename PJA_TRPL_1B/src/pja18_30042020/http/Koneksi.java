@@ -25,7 +25,7 @@ public class Koneksi {
     
     public Connection getConnection() {
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
             return java.sql.DriverManager.getConnection(url, username, password);
         } catch (ClassNotFoundException e) {
             Logger.getLogger(Koneksi.class.getName()).log(Level.SEVERE, null, e);
