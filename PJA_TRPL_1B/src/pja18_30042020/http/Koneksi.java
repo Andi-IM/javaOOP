@@ -15,6 +15,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import java.sql.ResultSet;
 
 
 public class Koneksi {
@@ -24,7 +25,7 @@ public class Koneksi {
     
     public Connection getConnection() {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             return java.sql.DriverManager.getConnection(url, username, password);
         } catch (ClassNotFoundException e) {
             Logger.getLogger(Koneksi.class.getName()).log(Level.SEVERE, null, e);
@@ -32,6 +33,10 @@ public class Koneksi {
             Logger.getLogger(Koneksi.class.getName()).log(Level.SEVERE, null, e);
         }
         return null;
+    }
+    
+    public ResultSet getQuery(Connection con, String sql) throws SQLException{
+        return con.createStatement().executeQuery(sql);
     }
     
     public static void main(String[] args) {
