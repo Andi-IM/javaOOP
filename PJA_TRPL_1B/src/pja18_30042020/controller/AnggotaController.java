@@ -8,6 +8,7 @@ package pja18_30042020.controller;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import pja18_30042020.dao.AnggotaDao;
@@ -40,7 +41,6 @@ public class AnggotaController {
     public void insert(){
         anggota = new AnggotaModel();
         anggota.setKode(view.getTxtKodeAngg().getText());
-        anggota.setNama(view.getTxtNamaAngg().getText());
         anggota.setAlamat(view.getTxtAlamat().getText());
         anggota.setJekel(view.getCbJekel().getSelectedItem().toString());
         
@@ -119,27 +119,4 @@ public class AnggotaController {
             JOptionPane.showMessageDialog(null, "Error: "+e.getMessage());
         }
     }
-    
-    public void onMouseClickTabelAnggota(){
-        AnggotaDao anggotaDao = new AnggotaDao();
-        
-        String kode = view.getTblAnggota().getValueAt(
-                view.getTblAnggota().getSelectedRow(),0).toString();
-        String nama = view.getTblAnggota().getValueAt(
-                view.getTblAnggota().getSelectedRow(),1).toString();
-        String alamat = view.getTblAnggota().getValueAt(
-                view.getTblAnggota().getSelectedRow(),2).toString();
-        String jekel = view.getTblAnggota().getValueAt(
-                view.getTblAnggota().getSelectedRow(),3).toString();
-        try {
-            AnggotaModel anggota = anggotaDao.getAnggota(kode);
-            view.getTxtKodeAngg().setText(anggota.getKode());
-            view.getTxtNamaAngg().setText(anggota.getNama());
-            view.getTxtAlamat().setText(anggota.getAlamat());
-            view.getCbJekel().setSelectedItem(anggota.getJekel());
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(view, "Error : "+e);
-        }
-    }   
-        
 }

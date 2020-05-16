@@ -75,7 +75,6 @@ public class FormAnggota extends javax.swing.JFrame {
         tblAnggota = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
 
         lbKodeAngg.setText("Kode Anggota");
 
@@ -94,11 +93,6 @@ public class FormAnggota extends javax.swing.JFrame {
         cbJekel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Pilih--", "L", "P" }));
 
         btnSearch.setText("Search");
-        btnSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearchActionPerformed(evt);
-            }
-        });
 
         btnInsert.setText("Insert");
         btnInsert.addActionListener(new java.awt.event.ActionListener() {
@@ -108,32 +102,12 @@ public class FormAnggota extends javax.swing.JFrame {
         });
 
         btnUpdate.setText("Update");
-        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateActionPerformed(evt);
-            }
-        });
 
         btnDelete.setText("Delete");
-        btnDelete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteActionPerformed(evt);
-            }
-        });
 
         btnCancel.setText("Cancel");
-        btnCancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelActionPerformed(evt);
-            }
-        });
 
         btnExit.setText("Exit");
-        btnExit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExitActionPerformed(evt);
-            }
-        });
 
         tblAnggota.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -146,11 +120,6 @@ public class FormAnggota extends javax.swing.JFrame {
                 "Kode  Anggota", "Nama Anggota", "Alamat", "Jenis kelamin"
             }
         ));
-        tblAnggota.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblAnggotaMouseClicked(evt);
-            }
-        });
         jScrollPane1.setViewportView(tblAnggota);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -227,34 +196,8 @@ public class FormAnggota extends javax.swing.JFrame {
 
     private void btnInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertActionPerformed
         anggotaController.insert();
-        anggotaController.isiTable();
-    }//GEN-LAST:event_btnInsertActionPerformed
-
-    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        anggotaController.update();
-        anggotaController.isiTable();
-    }//GEN-LAST:event_btnUpdateActionPerformed
-
-    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        anggotaController.delete();
-        anggotaController.isiTable();
-    }//GEN-LAST:event_btnDeleteActionPerformed
-
-    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-       anggotaController.clear();
-    }//GEN-LAST:event_btnCancelActionPerformed
-
-    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-        dispose();
-    }//GEN-LAST:event_btnExitActionPerformed
-
-    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         anggotaController.getAnggota();
-    }//GEN-LAST:event_btnSearchActionPerformed
-
-    private void tblAnggotaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblAnggotaMouseClicked
-        anggotaController.onMouseClickTabelAnggota();
-    }//GEN-LAST:event_tblAnggotaMouseClicked
+    }//GEN-LAST:event_btnInsertActionPerformed
 
     /**
      * @param args the command line arguments
