@@ -5,6 +5,7 @@
  */
 package pja18_30042020.view;
 
+import java.util.Date;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import pja18_30042020.controller.PeminjamanController;
@@ -104,6 +105,12 @@ public class FormPeminjaman extends javax.swing.JFrame {
         });
 
         lbTglPinjam.setText("Tanggal Pinjam");
+
+        txtTanggalpinjam.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtTanggalpinjamMouseClicked(evt);
+            }
+        });
 
         lbTanggalkembali.setText("Tanggal Kembali");
 
@@ -276,6 +283,10 @@ public class FormPeminjaman extends javax.swing.JFrame {
     private void txtKodebukuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtKodebukuActionPerformed
         peminjamanController.onKeyPressKodeBuku();
     }//GEN-LAST:event_txtKodebukuActionPerformed
+
+    private void txtTanggalpinjamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTanggalpinjamMouseClicked
+        txtTanggalpinjam.setText(java.time.LocalDate.now().toString());
+    }//GEN-LAST:event_txtTanggalpinjamMouseClicked
 
     /**
      * @param args the command line arguments

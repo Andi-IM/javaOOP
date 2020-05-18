@@ -127,7 +127,21 @@ public class BukuController {
        bukuDao = new BukuDao();
        String kodebuku = view.getTblBuku().getValueAt(
                 view.getTblBuku().getSelectedRow(),0).toString();
-       
+       String judulbuku = view.getTblBuku().getValueAt(
+                view.getTblBuku().getSelectedRow(),1).toString();
+       String pengarang = view.getTblBuku().getValueAt(
+                view.getTblBuku().getSelectedRow(),2).toString();
+       String jekel = view.getTblBuku().getValueAt(
+                view.getTblBuku().getSelectedRow(),3).toString();
+        try {
+            BukuModel buku = bukuDao.getBuku(kodebuku);
+            view.getTxtKodebuku().setText(buku.getKodebuku());
+            view.getTxtJudulbuku().setText(buku.getJudulbuku());
+            view.getTxtPengarang().setText(buku.getPengarang());
+            view.getTxtTahun().setText(buku.getTahun());
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(view, "Error : "+e);
+        }
     }   
        
 }

@@ -156,4 +156,9 @@ public class PeminjamanController {
             Logger.getLogger(AnggotaController.class.getName()).log(Level.SEVERE,null,e);
         }
     }
+    
+    public void onClickedTglpinjam()
+    {
+        return ;
+    }
 }

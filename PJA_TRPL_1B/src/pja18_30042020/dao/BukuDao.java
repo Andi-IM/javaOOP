@@ -37,8 +37,8 @@ public class BukuDao {
     }
 
     public void update(BukuModel buku) throws SQLException {
-        String sql = "update buku set namabuku=?, alamat=?, jekel=? "
-                + "where kodebuku=?";
+        String sql = "update buku set judul=?, pengarang=?, tahun=? "
+                + "where kode=?";
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setString(4, buku.getKodebuku());
         ps.setString(1, buku.getJudulbuku());
