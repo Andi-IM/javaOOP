@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import pja18_30042020.dao.AnggotaDao;
+import pja18_30042020.dao.AnggotaDaoImpl;
 import pja18_30042020.http.Koneksi;
 import pja18_30042020.model.AnggotaModel;
 import pja18_30042020.view.FormAnggota;
@@ -21,15 +21,15 @@ import pja18_30042020.view.FormAnggota;
  * @author Andi
  */
 public class AnggotaController {
-    FormAnggota view;
-    AnggotaModel anggota;
-    AnggotaDao anggotaDao;
-    Koneksi k;
-    Connection con;
+    private FormAnggota view;
+    private AnggotaModel anggota;
+    private AnggotaDaoImpl anggotaDao;
+    private Koneksi k;
+    private Connection con;
 
     public AnggotaController(FormAnggota view) {
         this.view = view;
-        anggotaDao = new AnggotaDao();
+        anggotaDao = new AnggotaDaoImpl();
         k = new Koneksi();
         try {
             con = k.getConnection();
@@ -122,7 +122,7 @@ public class AnggotaController {
     }
     
     public void onMouseClickTabelAnggota(){
-        AnggotaDao anggotaDao = new AnggotaDao();
+        AnggotaDaoImpl anggotaDao = new AnggotaDaoImpl();
         
         String kode = view.getTblAnggota().getValueAt(
                 view.getTblAnggota().getSelectedRow(),0).toString();

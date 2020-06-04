@@ -12,9 +12,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import pja18_30042020.dao.AnggotaDao;
-import pja18_30042020.dao.BukuDao;
-import pja18_30042020.dao.PeminjamanDao;
+import pja18_30042020.dao.AnggotaDaoImpl;
+import pja18_30042020.dao.BukuDaoImpl;
+import pja18_30042020.dao.PeminjamanDaoImpl;
 import pja18_30042020.http.Koneksi;
 import pja18_30042020.model.AnggotaModel;
 import pja18_30042020.model.BukuModel;
@@ -29,14 +29,14 @@ import pja18_30042020.view.FormPeminjaman;
 public class PeminjamanController {
     FormPeminjaman view;
     PeminjamanModel peminjaman;
-    PeminjamanDao peminjamanDao;
+    PeminjamanDaoImpl peminjamanDao;
     Connection con;
     Koneksi k;
     
     public PeminjamanController(FormPeminjaman view)
     {
         this.view = view;
-        peminjamanDao = new PeminjamanDao();
+        peminjamanDao = new PeminjamanDaoImpl();
         k = new Koneksi();
         try {
             con = k.getConnection();
@@ -127,7 +127,7 @@ public class PeminjamanController {
     public void onKeyPressKodeAnggota()
     {
         try {
-            AnggotaDao anggotadao = new AnggotaDao();
+            AnggotaDaoImpl anggotadao = new AnggotaDaoImpl();
             AnggotaModel anggota = anggotadao.getAnggota(
                             view.getTxtKodeanggota().getText());
             if (anggota!=null) {
@@ -143,7 +143,7 @@ public class PeminjamanController {
     
     public void onKeyPressKodeBuku()
     {
-        BukuDao bukudao = new BukuDao();
+        BukuDaoImpl bukudao = new BukuDaoImpl();
         try {
             BukuModel buku = bukudao.getBuku(view.getTxtKodebuku().getText());
             if (buku!=null) {

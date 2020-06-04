@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import pja18_30042020.dao.BukuDao;
+import pja18_30042020.dao.BukuDaoImpl;
 import pja18_30042020.http.Koneksi;
 import pja18_30042020.model.BukuModel;
 import pja18_30042020.view.FormBuku;
@@ -22,13 +22,13 @@ import pja18_30042020.view.FormBuku;
 public class BukuController {
     FormBuku view;
     BukuModel buku;
-    BukuDao bukuDao;
+    BukuDaoImpl bukuDao;
     Koneksi k;
     Connection con;
 
     public BukuController(FormBuku view) {
         this.view = view;
-        bukuDao = new BukuDao();
+        bukuDao = new BukuDaoImpl();
         k = new Koneksi();
         try {
             con = k.getConnection();
@@ -124,7 +124,7 @@ public class BukuController {
     }
     
     public void onMouseClickTabelBuku(){
-       bukuDao = new BukuDao();
+       bukuDao = new BukuDaoImpl();
        String kodebuku = view.getTblBuku().getValueAt(
                 view.getTblBuku().getSelectedRow(),0).toString();
        String judulbuku = view.getTblBuku().getValueAt(
