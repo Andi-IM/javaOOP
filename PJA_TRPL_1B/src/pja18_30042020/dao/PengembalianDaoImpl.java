@@ -9,8 +9,6 @@ package pja18_30042020.dao;
     import java.sql.PreparedStatement;
     import java.sql.ResultSet;
     import java.sql.SQLException;
-    import java.util.ArrayList;
-    import java.util.List;
     import pja18_30042020.http.Koneksi;
     import pja18_30042020.model.PengembalianModel;
 

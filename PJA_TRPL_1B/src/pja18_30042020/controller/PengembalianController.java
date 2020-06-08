@@ -44,16 +44,17 @@ public class PengembalianController {
         this.view = view;
         k = new Koneksi();
         con = k.getConnection();
-        //anggotaDao.create(anggota);
         bukuDao = new BukuDaoImpl();
         peminjamanDao = new PeminjamanDaoImpl();
         pengembalian = new PengembalianDaoImpl();
         peminjaman = new PeminjamanModel();
-        dateNow = format.format(new Date());
+        dateNow = java.time.LocalDate.now().toString();
     }
 
     public void viewTanggal(){
-        view.getTxtDikembalikan().setText(dateNow);
+        view.getTxtDikembalikan().setText(java.time.LocalDate.now().toString());
+        System.out.println(new Date());
+        System.out.println(java.time.LocalDate.now());  
     }
     
     public void onKeyPressKodeAnggota(){
@@ -114,7 +115,7 @@ public class PengembalianController {
             int terlambat = pengembalian.getKurangTanggal((com.mysql.jdbc.Connection) con, dateNow, tglKembali);
             double denda = terlambat * 500;
             
-            view.getTxtTerlambat().setText(terlambat + "hari");
+            view.getTxtTerlambat().setText(terlambat +" hari");
             view.getTxtDenda().setText("Rp."+denda);
         } catch (SQLException e) {
                 Logger.getLogger(AnggotaController.class.getName()).log(java.util.logging.Level.SEVERE,null,e);
