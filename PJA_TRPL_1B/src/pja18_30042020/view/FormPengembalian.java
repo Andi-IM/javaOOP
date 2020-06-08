@@ -22,6 +22,7 @@ public class FormPengembalian extends javax.swing.JFrame {
     public FormPengembalian() {
         initComponents();
         controller = new PengembalianController(this);
+        controller.viewTanggal();
         // controller.clear;
     }
 
@@ -140,6 +141,12 @@ public class FormPengembalian extends javax.swing.JFrame {
 
         lbKodeAnggota.setText("Kode Anggota");
 
+        txtKodeAnggota.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtKodeAnggotaActionPerformed(evt);
+            }
+        });
+
         lbNamaAnggota.setText("Nama Anggota");
 
         lbKodeBuku.setText("Kode Buku");
@@ -154,13 +161,13 @@ public class FormPengembalian extends javax.swing.JFrame {
 
         lbTglPinjam.setText("Tanggal Pinjam");
 
-        lbTgllKembali.setText("Tanggal Kembali");
-
-        txtTglKembali.addActionListener(new java.awt.event.ActionListener() {
+        txtTglPinjam.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTglKembaliActionPerformed(evt);
+                txtTglPinjamActionPerformed(evt);
             }
         });
+
+        lbTgllKembali.setText("Tanggal Kembali");
 
         lbDikembalikan.setText("Tanggal Dikembalikan");
 
@@ -223,8 +230,7 @@ public class FormPengembalian extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnCancel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnExit)
-                                .addGap(67, 67, 67))
+                                .addComponent(btnExit))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                     .addComponent(lbDenda)
@@ -318,11 +324,18 @@ public class FormPengembalian extends javax.swing.JFrame {
 
     private void txtKodeBukuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtKodeBukuActionPerformed
         // TODO add your handling code here:
+        controller.onKeyPressKodeBuku();
     }//GEN-LAST:event_txtKodeBukuActionPerformed
 
-    private void txtTglKembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTglKembaliActionPerformed
+    private void txtKodeAnggotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtKodeAnggotaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtTglKembaliActionPerformed
+        controller.onKeyPressKodeAnggota();
+    }//GEN-LAST:event_txtKodeAnggotaActionPerformed
+
+    private void txtTglPinjamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTglPinjamActionPerformed
+        // TODO add your handling code here:
+        controller.onKeyPressTanggalPinjam();
+    }//GEN-LAST:event_txtTglPinjamActionPerformed
 
     /**
      * @param args the command line arguments
