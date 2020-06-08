@@ -18,6 +18,6 @@ public interface PeminjamanDao {
     public void create(PeminjamanModel Peminjaman) throws SQLException;
     public void update(PeminjamanModel Peminjaman) throws SQLException;
     public void delete(String kode, String kodebuku, String tglpinjam) throws SQLException;
-    public PeminjamanModel getPeminjam(String kode) throws SQLException;
+    public PeminjamanModel getPeminjam(String kodeanggota, String kodebuku, String tglpinjam ) throws SQLException;
     public List<PeminjamanModel> getAllPeminjam(Connection con) throws SQLException;
 }

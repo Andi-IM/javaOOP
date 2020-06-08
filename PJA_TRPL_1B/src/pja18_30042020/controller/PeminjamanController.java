@@ -5,6 +5,7 @@
  */
 package pja18_30042020.controller;
 
+import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -152,13 +153,8 @@ public class PeminjamanController {
             } else {
                 JOptionPane.showMessageDialog(view, "Data Tidak Ada!");
             }
-        } catch (Exception e) {
+        } catch (HeadlessException | SQLException e) {
             Logger.getLogger(AnggotaController.class.getName()).log(Level.SEVERE,null,e);
         }
-    }
-    
-    public void onClickedTglpinjam()
-    {
-        return ;
     }
 }

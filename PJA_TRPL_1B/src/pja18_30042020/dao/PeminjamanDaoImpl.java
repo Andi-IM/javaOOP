@@ -18,7 +18,7 @@ package pja18_30042020.dao;
  * @author Andi
  */
 public class PeminjamanDaoImpl implements PeminjamanDao{
-    private static Connection con;
+    Connection con;
 
     public PeminjamanDaoImpl() {
         Koneksi k = new Koneksi();
@@ -62,11 +62,13 @@ public class PeminjamanDaoImpl implements PeminjamanDao{
     }
 
     @Override
-    public PeminjamanModel getPeminjam(String kode) throws SQLException {
+    public PeminjamanModel getPeminjam(String kodeanggota, String kodebuku, String tglpinjam ) throws SQLException {
         String sql = "select * from Peminjaman where kodeanggota=? "
                     +"and kodebuku=? and tglpinjam=?";
         PreparedStatement ps = con.prepareStatement(sql);
-        ps.setString(1, kode);
+        ps.setString(1, kodeanggota);
+        ps.setString(2, kodebuku);
+        ps.setString(3, tglpinjam);
         PeminjamanModel Peminjaman = null;
         ResultSet rs = ps.executeQuery();
         if (rs.next()) {

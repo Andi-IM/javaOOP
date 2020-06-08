@@ -19,7 +19,7 @@ import pja18_30042020.model.BukuModel;
  * @author Andi
  */
 public class BukuDaoImpl implements BukuDao{
-    private static Connection con;
+    Connection con;
 
     public BukuDaoImpl() {
         Koneksi k = new Koneksi();

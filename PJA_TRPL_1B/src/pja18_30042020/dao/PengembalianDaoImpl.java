@@ -21,7 +21,7 @@ package pja18_30042020.dao;
  */
 
 public class PengembalianDaoImpl implements PengembalianDao{
-    private static Connection con;
+    Connection con;
     
     public PengembalianDaoImpl() {
         Koneksi k = new Koneksi();

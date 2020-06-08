@@ -21,7 +21,7 @@ import pja18_30042020.model.AnggotaModel;
  */
 public class AnggotaDaoImpl implements AnggotaDao{
 
-    private static Connection con;
+    Connection con;
 
     public AnggotaDaoImpl() {
         Koneksi k = new Koneksi();

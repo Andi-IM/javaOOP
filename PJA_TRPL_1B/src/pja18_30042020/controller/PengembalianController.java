@@ -18,7 +18,6 @@ import pja18_30042020.http.Koneksi;
 import pja18_30042020.model.PeminjamanModel;
 import pja18_30042020.view.FormPengembalian;
 import java.text.SimpleDateFormat;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import pja18_30042020.model.AnggotaModel;
@@ -85,6 +84,40 @@ public class PengembalianController {
             }
         } catch (HeadlessException | SQLException e) {
             Logger.getLogger(AnggotaController.class.getName()).log(java.util.logging.Level.SEVERE,null,e);
+        }
+    }
+    
+    public void onKeyPressTanggalPinjam()
+    {
+        try {
+            peminjaman = peminjamanDao.getPeminjam(
+            view.getTxtKodeAnggota().getText(),
+            view.getTxtKodeBuku().getText(),
+            view.getTxtTglPinjam().getText()
+            );
+            if (peminjaman != null) {
+                view.getTxtTglKembali().setText(peminjaman.getTglkembali());
+                view.getTxtDikembalikan().requestFocus();
+            } else {
+                JOptionPane.showMessageDialog(view, "Tidak Ada Data");
+            } 
+        }catch (HeadlessException | SQLException e) {
+                Logger.getLogger(AnggotaController.class.getName()).log(java.util.logging.Level.SEVERE,null,e);
+                }
+        
+    }
+    
+       
+    public void onKeypressTanggalDikembalikan(){
+        try {
+            String tglKembali = view.getTxtTglKembali().getText();
+            int terlambat = pengembalian.getKurangTanggal((com.mysql.jdbc.Connection) con, dateNow, tglKembali);
+            double denda = terlambat * 500;
+            
+            view.getTxtTerlambat().setText(terlambat + "hari");
+            view.getTxtDenda().setText("Rp."+denda);
+        } catch (SQLException e) {
+                Logger.getLogger(AnggotaController.class.getName()).log(java.util.logging.Level.SEVERE,null,e);
         }
     }
 }

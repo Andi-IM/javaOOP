@@ -171,6 +171,12 @@ public class FormPengembalian extends javax.swing.JFrame {
 
         lbDikembalikan.setText("Tanggal Dikembalikan");
 
+        txtDikembalikan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDikembalikanActionPerformed(evt);
+            }
+        });
+
         lbTerlambat.setText("Terlambat");
 
         lbDenda.setText("Denda");
@@ -336,6 +342,11 @@ public class FormPengembalian extends javax.swing.JFrame {
         // TODO add your handling code here:
         controller.onKeyPressTanggalPinjam();
     }//GEN-LAST:event_txtTglPinjamActionPerformed
+
+    private void txtDikembalikanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDikembalikanActionPerformed
+        // TODO add your handling code here:
+        controller.onKeypressTanggalDikembalikan();
+    }//GEN-LAST:event_txtDikembalikanActionPerformed
 
     /**
      * @param args the command line arguments
