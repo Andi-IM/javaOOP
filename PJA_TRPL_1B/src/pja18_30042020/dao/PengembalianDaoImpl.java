@@ -15,7 +15,7 @@ package pja18_30042020.dao;
 
 /**
  *
- * @author Andi
+ * @author Andi Irham
  */
 
 public class PengembalianDaoImpl implements PengembalianDao{
