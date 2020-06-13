@@ -9,6 +9,7 @@ package pja18_30042020.dao;
     import java.sql.PreparedStatement;
     import java.sql.ResultSet;
     import java.sql.SQLException;
+import java.util.List;
     import pja18_30042020.http.Koneksi;
     import pja18_30042020.model.PengembalianModel;
 
@@ -59,8 +60,8 @@ public class PengembalianDaoImpl implements PengembalianDao{
 
     @Override
     public void delete(String kode, String kodebuku, String tglpinjam) throws SQLException {
-        String sql = "delete from Peminjaman where kodeanggota=? "
-                    +"and kodebuku=? and tglpinjam=?";
+        String sql = "delete from pengembalian where kodeAnggota=? "
+                    +"and Kodebuku=? and tglPinjam=?";
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setString(1, kode);
         ps.setString(2, kodebuku);
@@ -104,5 +105,10 @@ public class PengembalianDaoImpl implements PengembalianDao{
             kembali.setDenda(0);
         }
         return kembali;
+    }
+
+    @Override
+    public List<PengembalianModel> getAllKembali(com.mysql.jdbc.Connection con) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

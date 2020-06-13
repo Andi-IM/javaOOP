@@ -54,8 +54,6 @@ public class FormPeminjaman extends javax.swing.JFrame {
     public JTextField getTxtTanggalpinjam() {
         return txtTanggalpinjam;
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -161,7 +159,7 @@ public class FormPeminjaman extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Kode Anggota", "Kode Buku", "Tanggal Pinjam", "Tanggal Kembali"
             }
         ));
         jScrollPane1.setViewportView(tblPinjam);

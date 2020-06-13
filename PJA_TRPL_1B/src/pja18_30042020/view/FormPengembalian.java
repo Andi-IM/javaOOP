@@ -5,6 +5,7 @@
  */
 package pja18_30042020.view;
 
+import java.awt.event.KeyEvent;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import pja18_30042020.controller.PengembalianController;
@@ -24,6 +25,8 @@ public class FormPengembalian extends javax.swing.JFrame {
         controller = new PengembalianController(this);
         controller.viewTanggal();
         // controller.clear;
+        controller.isiTablePemimnjaman();
+        controller.isiTablePengembalian();
     }
 
     public JTable getTblPeminjaman() {
@@ -141,9 +144,9 @@ public class FormPengembalian extends javax.swing.JFrame {
 
         lbKodeAnggota.setText("Kode Anggota");
 
-        txtKodeAnggota.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtKodeAnggotaActionPerformed(evt);
+        txtKodeAnggota.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtKodeAnggotaKeyPressed(evt);
             }
         });
 
@@ -151,9 +154,9 @@ public class FormPengembalian extends javax.swing.JFrame {
 
         lbKodeBuku.setText("Kode Buku");
 
-        txtKodeBuku.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtKodeBukuActionPerformed(evt);
+        txtKodeBuku.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtKodeBukuKeyPressed(evt);
             }
         });
 
@@ -182,14 +185,29 @@ public class FormPengembalian extends javax.swing.JFrame {
         lbDenda.setText("Denda");
 
         btnInsert.setText("Insert");
+        btnInsert.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInsertActionPerformed(evt);
+            }
+        });
 
         btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         btnSearch.setText("Search");
 
         btnCancel.setText("Cancel");
 
         btnExit.setText("Exit");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
 
         tblPeminjaman.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -202,6 +220,11 @@ public class FormPengembalian extends javax.swing.JFrame {
                 "Kode Anggota", "Kode Buku", "Tanggal Pinjam", "Tanggal Kembali"
             }
         ));
+        tblPeminjaman.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblPeminjamanMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(tblPeminjaman);
 
         tblPengembalian.setModel(new javax.swing.table.DefaultTableModel(
@@ -215,6 +238,11 @@ public class FormPengembalian extends javax.swing.JFrame {
                 "Kode Anggota", "Kode Buku", "Tanggal Pinjam", "Tanggal Kembali", "Tanggal Dikembalikan", "Terlambat", "Denda"
             }
         ));
+        tblPengembalian.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblPengembalianMouseClicked(evt);
+            }
+        });
         jScrollPane4.setViewportView(tblPengembalian);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -328,16 +356,6 @@ public class FormPengembalian extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtKodeBukuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtKodeBukuActionPerformed
-        // TODO add your handling code here:
-        controller.onKeyPressKodeBuku();
-    }//GEN-LAST:event_txtKodeBukuActionPerformed
-
-    private void txtKodeAnggotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtKodeAnggotaActionPerformed
-        // TODO add your handling code here:
-        controller.onKeyPressKodeAnggota();
-    }//GEN-LAST:event_txtKodeAnggotaActionPerformed
-
     private void txtTglPinjamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTglPinjamActionPerformed
         // TODO add your handling code here:
         controller.onKeyPressTanggalPinjam();
@@ -347,6 +365,49 @@ public class FormPengembalian extends javax.swing.JFrame {
         // TODO add your handling code here:
         controller.onKeypressTanggalDikembalikan();
     }//GEN-LAST:event_txtDikembalikanActionPerformed
+
+    private void btnInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertActionPerformed
+        // TODO add your handling code here:
+        controller.insert();
+        controller.isiTablePemimnjaman();
+        controller.isiTablePengembalian();
+    }//GEN-LAST:event_btnInsertActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        controller.delete();
+        controller.isiTablePemimnjaman();
+        controller.isiTablePengembalian();
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void tblPengembalianMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPengembalianMouseClicked
+        // TODO add your handling code here:
+        controller.onClickTablePengembalian();
+    }//GEN-LAST:event_tblPengembalianMouseClicked
+
+    private void tblPeminjamanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPeminjamanMouseClicked
+        // TODO add your handling code here:
+        controller.onClickTablePeminjaman();
+    }//GEN-LAST:event_tblPeminjamanMouseClicked
+
+    private void txtKodeAnggotaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtKodeAnggotaKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            controller.onKeyPressKodeAnggota();
+        }
+    }//GEN-LAST:event_txtKodeAnggotaKeyPressed
+
+    private void txtKodeBukuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtKodeBukuKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            controller.onKeyPressKodeBuku();
+        }
+    }//GEN-LAST:event_txtKodeBukuKeyPressed
+
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_btnExitActionPerformed
 
     /**
      * @param args the command line arguments

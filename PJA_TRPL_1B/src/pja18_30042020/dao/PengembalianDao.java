@@ -7,6 +7,7 @@ package pja18_30042020.dao;
 
 import com.mysql.jdbc.Connection;
 import java.sql.SQLException;
+import java.util.List;
 import pja18_30042020.model.PengembalianModel;
 
 /**
@@ -19,4 +20,5 @@ public interface PengembalianDao {
      public void delete(String kode, String kodebuku, String tglpinjam) throws SQLException;
      public int getKurangTanggal(Connection con, String tgl1, String tgl2) throws SQLException;
      public PengembalianModel getKembali(String kodeAnggota, String kodeBuku, String tglPinjam) throws SQLException;
+     public List<PengembalianModel> getAllKembali(Connection con) throws SQLException;
 }
