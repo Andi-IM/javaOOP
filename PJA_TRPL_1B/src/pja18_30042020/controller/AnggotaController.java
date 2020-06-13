@@ -5,10 +5,10 @@
  */
 package pja18_30042020.controller;
 
+import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import pja18_30042020.dao.AnggotaDaoImpl;
@@ -48,7 +48,7 @@ public class AnggotaController {
         try {
             anggotaDao.create(anggota);
             JOptionPane.showMessageDialog(null, "INSERTED");
-        } catch (Exception e) {
+        } catch (HeadlessException | SQLException e) {
             JOptionPane.showMessageDialog(null, 
                     "ERROR: "+e.getMessage());
         }
@@ -63,7 +63,7 @@ public class AnggotaController {
         try {
             anggotaDao.update(anggota);
             JOptionPane.showMessageDialog(null, "UPDATED");
-        } catch (Exception e) {
+        } catch (HeadlessException | SQLException e) {
             JOptionPane.showMessageDialog(null, 
                     "ERROR: "+e.getMessage());
         }
@@ -80,7 +80,7 @@ public class AnggotaController {
             } else {
             JOptionPane.showMessageDialog(null, "NOT FOUND");
             }
-       } catch (Exception e) {
+       } catch (HeadlessException | SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
@@ -90,7 +90,7 @@ public class AnggotaController {
         try {
             anggotaDao.delete(kodeanggota);
             JOptionPane.showMessageDialog(null, "DELETED");
-        } catch (Exception e) {
+        } catch (HeadlessException | SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
         this.clear();
@@ -142,5 +142,5 @@ public class AnggotaController {
             JOptionPane.showMessageDialog(view, "Error : "+e);
         }
     }   
-        
+    
 }
