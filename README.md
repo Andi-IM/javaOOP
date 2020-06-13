@@ -2,5 +2,3 @@
 
 # javaOOP
 Andy's Project for Java Object Oriented Programming
-
-code inspector : https://frontend.code-inspector.com/public/project/9431/StrukData/dashboard
