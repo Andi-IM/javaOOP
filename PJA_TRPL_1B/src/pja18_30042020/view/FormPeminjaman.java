@@ -5,7 +5,6 @@
  */
 package pja18_30042020.view;
 
-import java.util.Date;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import pja18_30042020.controller.PeminjamanController;

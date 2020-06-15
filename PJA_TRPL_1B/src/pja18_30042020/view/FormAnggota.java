@@ -85,10 +85,6 @@ public class FormAnggota extends javax.swing.JFrame {
 
         lbJekel.setText("Jekel");
 
-        txtKodeAngg.setText("jTextField1");
-
-        txtNamaAngg.setText("jTextField2");
-
         txtAlamat.setText("jTextField3");
 
         cbJekel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Pilih--", "L", "P" }));

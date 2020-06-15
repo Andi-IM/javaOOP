@@ -127,7 +127,7 @@ public class FormBuku extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Kode Buku", "Judul Buku", "Pengarang", "Tahun"
             }
         ));
         tblBuku.addMouseListener(new java.awt.event.MouseAdapter() {

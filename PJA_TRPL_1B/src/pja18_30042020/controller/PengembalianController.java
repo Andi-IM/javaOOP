@@ -118,6 +118,10 @@ public class PengembalianController {
         try {
             String tglKembali = view.getTxtTglKembali().getText();
             int terlambat = pengembalianDao.getKurangTanggal((com.mysql.jdbc.Connection) con, dateNow, tglKembali);
+            
+            if (terlambat <= 0) {
+                terlambat = 0;
+            }
             double denda = terlambat * 500;
             
             view.getTxtTerlambat().setText(terlambat +" hari");
