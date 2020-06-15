@@ -4,5 +4,7 @@ jdk:
 
 before_install:
   - echo $(ant -version)
+  - sudo apt-get -qq update
+  - sudo apt-get install ant
   
   
