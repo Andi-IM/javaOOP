@@ -1,4 +1,5 @@
 language: java
 jdk:
--oraclejdk12
--ant 1.10.0
+- oraclejdk12
+- oraclejdk8
+- ant 1.10.0
