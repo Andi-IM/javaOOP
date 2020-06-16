@@ -1,6 +1,10 @@
 language: java
 jdk:
 - oraclejdk12
-- oraclejdk8
 
-script: ant build
+before_install:
+  - echo $(ant -version)
+  - sudo apt-get -qq update
+  - sudo apt-get install ant
+  
+  
